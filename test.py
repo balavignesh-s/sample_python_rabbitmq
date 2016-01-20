@@ -7,7 +7,8 @@ class TestSuite(unittest.TestCase):
         rabbit = Rabbit()
         rabbit.sendMessage()
         things = rabbit.relayMessage()
-        self.failIf(things != "Hello World!")
+        things = things.decode("unicode_escape")
+        self.assertFalse(things != "Hello World!")
 
 
 def main():
